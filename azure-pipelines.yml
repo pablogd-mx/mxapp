@@ -9,6 +9,12 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+- task: Docker@2
+  inputs:
+    repository: 'private-cloud.registry.mendix.com'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
+
 steps:
 - script: |
    echo " Downloading latest mxpc pipeline image"
