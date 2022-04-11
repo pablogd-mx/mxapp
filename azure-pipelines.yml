@@ -9,12 +9,6 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-- task: Docker@2
-  inputs:
-    repository: 'private-cloud.registry.mendix.com'
-    command: 'buildAndPush'
-    Dockerfile: '**/Dockerfile'
-
 steps:
 - script: |
    echo " Downloading latest mxpc pipeline image"
@@ -25,3 +19,8 @@ steps:
     echo Executing mxpc-pipeline-tools-cli
     docker run -it private-cloud.registry.mendix.com/mxpc-pipeline-tools-cli:0.0.4 ./mxpc-pipeline-tools-cli
   displayName: 'Executing mxpc-pipeline-tools-cli to create MendixApp'
+- task: Docker@2
+  inputs:
+    repository: 'private-cloud.registry.mendix.com'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
