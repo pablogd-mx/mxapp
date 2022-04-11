@@ -10,9 +10,10 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo " Downloading latest mxpc pipeline image"
-  docker pull mxpc-pipeline-tools-cli:0.0.4 
-  displayName: 'Downloading latest mxpc pipeline image'
+- script: |
+   echo " Downloading latest mxpc pipeline image"
+   docker pull mxpc-pipeline-tools-cli:0.0.4 
+  displayName: "Downloading latest mxpc pipeline image"
 
 - script: |
     echo Executing mxpc-pipeline-tools-cli
