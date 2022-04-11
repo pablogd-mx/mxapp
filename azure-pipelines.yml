@@ -1,11 +1,8 @@
 # Starter pipeline
-- task: DockerInstaller@0
-  inputs:
-    dockerVersion: '17.09.0-ce'
+
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
-
 trigger:
 - main
 
@@ -22,6 +19,6 @@ steps:
     echo Executing mxpc-pipeline-tools-cli
     docker run -it private-cloud.registry.mendix.com/mxpc-pipeline-tools-cli:0.0.4 ./mxpc-pipeline-tools-cli
   displayName: 'Executing mxpc-pipeline-tools-cli to create MendixApp'
-- task: ContainerBuild@0
+- task: DockerInstaller@0
   inputs:
-    Dockerfile: 'Dockerfile'
+    dockerVersion: '17.09.0-ce'
